@@ -1,1 +1,8 @@
 /.vscode
+# Build output
+**/bin/
+**/obj/
+
+# NuGet packages
+*.nupkg
+packages/
