@@ -6,3 +6,6 @@
 # NuGet packages
 *.nupkg
 packages/
+
+**/.json
+**/.cache
