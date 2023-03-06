@@ -1,4 +1,4 @@
-# Project Files
+# ParkWise – Parking Lot Management System
 
 ## Contents
 
