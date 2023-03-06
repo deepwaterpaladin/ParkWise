@@ -2,7 +2,7 @@ using System;
 
 class Program
 {
-    static void DemoTwo()
+    static void Demo()
     {
         ParkingLot RideauStreet = new ParkingLot(30, "290 Rideau");
         Console.WriteLine($"Total Spots: {RideauStreet.GetNumSpots()}");
@@ -18,6 +18,6 @@ class Program
     
     static void Main(string[] args)
     {
-        DemoTwo();
+        Demo();
     }
 }
