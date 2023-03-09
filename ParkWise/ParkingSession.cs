@@ -2,18 +2,18 @@ using System;
 
 public class ParkingSession : Payment
 {
-    public DateTime timeIn {get; set;}
-    public DateTime? timeOut;
+    public DateTime timeIn { get; set; }
+    public DateTime? timeOut { get; set; }
     public double? totalSession;
-    public double lot_price; 
+    public double lot_price;
     public double? payment_total;
-    public string lot_id;
+    public string lot_id { get; set; }
 
     public double GetPayment()
     {
         return (double)(this.lot_price * this.totalSession);
     }
-    
+
 
     public ParkingSession(string lot_id, DateTime? timeIn)
     {
