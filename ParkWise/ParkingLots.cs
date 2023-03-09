@@ -2,18 +2,45 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
+/// <summary>
+/// Represents a parking lot with the number of floors, available spots, and the ID of the lot.
+/// </summary>
 public class ParkingLot
 {
+    /// <summary>
+    /// The number of floors in the parking lot.
+    /// </summary>
     public int? numberOfFloors {get; set;} // some lots will have several floors.
 
+    /// <summary>
+    /// A list of parking spots in the parking lot.
+    /// </summary>
     private List<ParkingSpot> _spots;
+    /// <summary>
+    /// A dictionary of parking sessions with their corresponding spot numbers.
+    /// </summary>
     public Dictionary<int, ParkingSession> sessionSpots;
+
+    /// <summary>
+    /// The number of total spots in the parking lot.
+    /// </summary>
     public int numSpots {get;set;}
 
+    /// <summary>
+    /// The number of empty spots in the parking lot.
+    /// </summary>
     public int emptySpots {get;set;}
+
+    /// <summary>
+    /// The ID of the parking lot.
+    /// </summary>
     public string lotID { get; set; }
 
+    /// <summary>
+    /// Initializes a new instance of the ParkingLot class with the specified number of spots and ID.
+    /// </summary>
+    /// <param name="numberOfSpots">The number of spots in the parking lot.</param>
+    /// <param name="ID">The ID of the parking lot.</param>
     public ParkingLot(int numberOfSpots, string ID)
     {
         this.lotID = ID;
@@ -27,13 +54,20 @@ public class ParkingLot
         this.emptySpots = numSpots;
     }
 
-    // Method to retrieve a specific parking spot by spot number
+    /// <summary>
+    /// Retrieves a specific parking spot by spot number.
+    /// </summary>
+    /// <param name="spotNumber">The spot number to retrieve.</param>
+    /// <returns>The parking spot with the specified spot number, or null if the spot is not found.</returns>
     private ParkingSpot GetSpot(int spotNumber)
     {
         return _spots.FirstOrDefault(s => s.SpotNumber == spotNumber);
     }
 
-    // Method to occupy a parking spot
+    /// <summary>
+    /// Occupies a parking spot.
+    /// </summary>
+    /// <param name="spotNumber">The spot number to occupy.</param>
     public void OccupySpot(int spotNumber)
     {
         ParkingSpot spot = GetSpot(spotNumber);
@@ -51,7 +85,10 @@ public class ParkingLot
         }
     }
 
-    // Method to release a parking spot
+    /// <summary>
+    /// Releases a parking spot.
+    /// </summary>
+    /// <param name="spotNumber">The spot number to release.</param>
     public void EmptySpot(int spotNumber)
     {
         ParkingSpot spot = GetSpot(spotNumber);

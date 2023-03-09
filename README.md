@@ -2,11 +2,21 @@
 
 ## Contents
 
+- [TO DO](#todo)
 - [How to Use](#howto)
 - [Contributing](#contributing)
 - [ParkingLot.cs](#parkinglotcs)
 - [ParkingSpot.cs](#parkingspotcs)
 - [Payment.cs](#paymentcs)
+
+## TO DO <a id="todo"> </a>
+
+- [X] Create ParkingSpot class
+- [ ] Create ParkingLot class
+- [ ] Figure out a better way to determine the price/hour at a given lot (Payment.cs)
+- [ ] Research [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui?view=net-maui-7.0) & [Razor Pages in ASP.NET](https://learn.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-7.0&tabs=visual-studio-code) for UI
+- [ ] Implement database – [see ADO.NET](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/csharp/language-compilers/create-sql-server-database-programmatically)
+- [ ] Download xUnit & Write Tests
 
 ## How to use <a id="howto"> </a>
 
