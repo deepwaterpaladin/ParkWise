@@ -20,4 +20,9 @@ public class ParkingSession : Payment
         this.lot_price = GetLot(lot_id);
         this.lot_id = lot_id;
     }
+
+    public void isExpired()
+    {
+        // method to determine if parking spot is expired.
+    }
 }

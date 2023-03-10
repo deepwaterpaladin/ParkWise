@@ -10,7 +10,7 @@ public class ParkingLot
     /// <summary>
     /// The number of floors in the parking lot.
     /// </summary>
-    public int? numberOfFloors {get; set;} // some lots will have several floors.
+    public int? numberOfFloors {private get; set;} // some lots will have several floors.
 
     /// <summary>
     /// A list of parking spots in the parking lot.
@@ -71,18 +71,22 @@ public class ParkingLot
     public void OccupySpot(int spotNumber)
     {
         ParkingSpot spot = GetSpot(spotNumber);
-        if (spot != null)
-        {
-            spot.IsOccupied = true;
-            spot.timeOccuipied = DateTime.Now;
-            ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
-            sessionSpots.Add(spotNumber,sesh);
-            emptySpots -= 1;
-        }
-        else{
-            //TODO: better error handling
-            Console.WriteLine($"Spot #{spotNumber} is empty. Try another spot.");
-        }
+        spot.IsOccupied = true;
+        spot.timeOccuipied = DateTime.Now;
+        ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
+        sessionSpots.Add(spotNumber,sesh);
+        emptySpots -= 1;
+    }
+
+    public void OccupySpot()
+    {
+        int spotNumber = GetFirstAvaliableSpot();
+        ParkingSpot spot = GetSpot(spotNumber);
+        spot.IsOccupied = true;
+        spot.timeOccuipied = DateTime.Now;
+        ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
+        sessionSpots.Add(spotNumber,sesh);
+        emptySpots -= 1;
     }
 
     /// <summary>
@@ -108,4 +112,30 @@ public class ParkingLot
         return _spots.Count;
     }
 
+    /// <summary>
+    /// Gets the first available parking spot.
+    /// </summary>
+    /// <param name="print_occupied_spots">A flag indicating whether to print the list of occupied spots. Defaults to false.</param>
+    /// <returns>The number of the first available parking spot.</returns>
+    public int GetFirstAvaliableSpot(bool? print_occupied_spots = false)
+    {
+        List<int> occupiedSpots = new List<int>();
+        List<int> availableSpots = new List<int>();
+        foreach (KeyValuePair<int, ParkingSession> pair in sessionSpots)
+        {
+            occupiedSpots.Add(pair.Key);
+        }
+        for (int i = 1; i <= numSpots; i++)
+        {
+            if(!occupiedSpots.Contains(i))
+            {
+                availableSpots.Add(i);
+            }
+        }
+        if (print_occupied_spots == true)
+        {
+            Console.WriteLine($"Occupied spots: {string.Join(", ", occupiedSpots)}");
+        }
+        return availableSpots.Min();
+    }
 }
