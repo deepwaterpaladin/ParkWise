@@ -15,6 +15,8 @@ class Program
         RideauStreet.OccupySpot(28);
         RideauStreet.OccupySpot(1);
         RideauStreet.OccupySpot(9);
+        Console.WriteLine($"First available spot: {RideauStreet.GetFirstAvaliableSpot()}");
+        RideauStreet.OccupySpot();
         Console.WriteLine($"Total Spots: {RideauStreet.GetNumSpots()}");
         Console.WriteLine($"empty spots: {RideauStreet.emptySpots}");
         Console.WriteLine($"{RideauStreet.sessionSpots[4].lot_price}");
