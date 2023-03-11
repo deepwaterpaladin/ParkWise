@@ -114,7 +114,7 @@ public class ParkingLot
             emptySpots +=1;
             spot.timeEmpited = DateTime.Now;
             sessionSpots[spotNumber].timeOut = spot.timeEmpited;
-            sessionSpots[spotNumber].GetPayment();
+            sessionSpots[spotNumber].SetPayment();
             spot.timeOccuipied = null;
         }
     }

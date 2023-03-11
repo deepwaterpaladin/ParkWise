@@ -11,9 +11,14 @@ public class ParkingSession : Payment
 
     public double GetPayment()
     {
+        this.totalSession = CalculateTotalTimeParked(timeIn, (DateTime)timeOut);
         return (double)(this.lot_price * this.totalSession);
     }
 
+    public void SetPayment()
+    {
+        this.payment_total = GetPayment();
+    }
 
     public ParkingSession(string lot_id, DateTime? timeIn)
     {
@@ -21,13 +26,14 @@ public class ParkingSession : Payment
         this.lot_id = lot_id;
     }
 
-    public ParkingSession(string lot_id, DateTime timeIn, DateTime end_time)
+    public ParkingSession(string lot_id, DateTime timeIn, DateTime end_time, double payment_total)
     {
         this.lot_price = GetLot(lot_id);
         this.lot_id = lot_id;
+        this.payment_total = payment_total;
     }
 
-    public void isExpired()
+    public async void isExpired()
     {
         // method to determine if parking spot is expired.
     }

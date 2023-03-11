@@ -6,7 +6,7 @@ public class PrepaidSession: Payment
     public DateTime endTime { get; set; }
     public double totalSession;
     public double lot_price;
-    public double payment_total { get; set; }
+    public double payment_total { get; set; }  
     public string lot_id { get; set; }  
     private bool isExpired { get; set; }
     public ParkingSession session { get; set; }
@@ -18,13 +18,8 @@ public class PrepaidSession: Payment
         lot_id = id;
         startTime = start_time;
         endTime = end_time;
-        payment_total = GetPayment();
-        session = new ParkingSession(id, start_time, end_time);
+        payment_total = lot_price*totalSession;
+        session = new ParkingSession(id, start_time, end_time, payment_total);
 
     }
-    private double GetPayment()
-    {
-      return (double)(this.lot_price * this.totalSession);
-    }
-
 }
