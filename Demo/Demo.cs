@@ -21,10 +21,8 @@ class Program
         Console.WriteLine($"empty spots: {RideauStreet.emptySpots}");
         Console.WriteLine($"{RideauStreet.sessionSpots[4].lot_price}");
         Console.WriteLine($"First available spot: {RideauStreet.GetFirstAvaliableSpot()}");
-        foreach(var i in RideauStreet.sessionSpots)
-        {
-            Console.WriteLine(i.Value.totalSession.ToString());
-        }
+        RideauStreet.OccupyPrepaidSpot(new DateTime(2022, 3, 11, 10, 0, 0), new DateTime(2022, 3, 11, 15, 0, 0));
+        Console.WriteLine($"{RideauStreet.sessionSpots[3].payment_total}");
     }
 
     static void Demo2()
@@ -38,19 +36,20 @@ class Program
         BankStreet.OccupySpot(10);
         BankStreet.OccupySpot(15);
         BankStreet.OccupySpot(28);
-        BankStreet.OccupyPrepaidSpot(new DateTime(2023, 3, 11, 10, 0, 0), new DateTime(2023, 3, 11, 15, 0, 0));
-        BankStreet.OccupyPrepaidSpot(new DateTime(2023, 5, 1, 8, 30, 0), new DateTime(2023, 5, 1, 14, 0, 0));
+        BankStreet.EmptySpot(4);
+        BankStreet.OccupyPrepaidSpot(new DateTime(2022, 3, 11, 10, 0, 0), new DateTime(2022, 3, 11, 15, 0, 0));
+        BankStreet.OccupyPrepaidSpot(new DateTime(2022, 5, 1, 8, 30, 0), new DateTime(2022, 5, 1, 14, 0, 0));
         Console.WriteLine($"Total Spots: {BankStreet.GetNumSpots()}");
         Console.WriteLine($"empty spots: {BankStreet.emptySpots}");
         foreach(var i in BankStreet.sessionSpots)
         {
-            Console.WriteLine(i.Value.timeIn);
+            Console.WriteLine(i.Value.payment_total);
         }
     }
     
     
     static void Main(string[] args)
     {
-        Demo();
+        Demo2();
     }
 }
