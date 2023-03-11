@@ -4,64 +4,81 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ParkWise.Tests
+namespace ParkingLotTests
 {
     public class ParkingLotTests
-{
-    [Fact]
-    public void TestOccupyingSpot()
     {
-        // Arrange
-        ParkingLot parkingLot = new ParkingLot(10, "A");
+        [Fact]
+        public void TestParkingLotConstructor()
+        {
+            // Arrange
+            int numberOfSpots = 10;
+            string ID = "101 Bank";
 
-        // Act
-        parkingLot.OccupySpot(5);
+            // Act
+            ParkingLot lot = new ParkingLot(numberOfSpots, ID);
 
-        // Assert
-        Assert.False(parkingLot.GetSpot(5).IsOccupied);
+            // Assert
+            Assert.Equal(numberOfSpots, lot.GetNumSpots());
+            Assert.Equal(ID, lot.lotID);
+            Assert.Equal(numberOfSpots, lot.emptySpots);
+            // Assert.Null(lot.numberOfFloors);
+        }
+
+        [Fact]
+        public void TestOccupySpot()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "10 King");
+
+            // Act
+            lot.OccupySpot(1);
+
+            // Assert
+            Assert.Equal(9, lot.emptySpots);
+        }
+
+        [Fact]
+        public void TestEmptySpot()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            lot.OccupySpot(1);
+
+            // Act
+            lot.EmptySpot(1);
+
+            // Assert
+            Assert.Equal(10, lot.emptySpots);
+        }
+
+        [Fact]
+        public void TestGetFirstAvailableSpot()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            lot.OccupySpot(1);
+
+            // Act
+            int firstAvailableSpot = lot.GetFirstAvaliableSpot();
+
+            // Assert
+            Assert.Equal(2, firstAvailableSpot);
+        }
+
+        [Fact]
+        public void TestOccupyPrepaidSpot()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "290 Rideau");
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = startTime.AddHours(1);
+
+            // Act
+            lot.OccupyPrepaidSpot(startTime, endTime);
+
+            // Assert
+            Assert.Equal(9, lot.emptySpots);
+        }
     }
-
-    [Fact]
-    public void TestEmptyingSpot()
-    {
-        // Arrange
-        ParkingLot parkingLot = new ParkingLot(10, "A");
-
-        // Act
-        parkingLot.EmptySpot(5);
-
-        // Assert
-        Assert.True(parkingLot.GetSpot(5).IsOccupied);
-    }
-
-    [Fact]
-    public void TestGettingNumSpots()
-    {
-        // Arrange
-        ParkingLot parkingLot = new ParkingLot(10, "A");
-
-        // Act
-        int numSpots = parkingLot.GetNumSpots();
-
-        // Assert
-        Assert.Equal(10, numSpots);
-    }
-
-    [Fact]
-    public void TestGettingFirstAvailableSpot()
-    {
-        // Arrange
-        ParkingLot parkingLot = new ParkingLot(10, "A");
-        parkingLot.OccupySpot(2);
-        parkingLot.OccupySpot(4);
-        parkingLot.OccupySpot(7);
-
-        // Act
-        int firstAvailableSpot = parkingLot.GetFirstAvaliableSpot();
-
-        // Assert
-        Assert.Equal(1, firstAvailableSpot);
-    }
-}
-
 }
