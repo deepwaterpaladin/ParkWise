@@ -6,10 +6,11 @@ using System.Collections.Generic;
 
 public abstract class Payment
 {
+    
     public static Dictionary<string, double> lots = new Dictionary<string, double> {
-        { "Lot A", 4.50 },
+        { "10 King", 4.50 },
         { "290 Rideau", 5.25 },
-        { "Lot C", 4.95 }
+        { "101 Bank", 4.95 }
     };
 
     public static double GetLot(string key)
@@ -30,5 +31,4 @@ public abstract class Payment
         double totalHours = duration.TotalHours;
         return totalHours;
     }
-
 }
