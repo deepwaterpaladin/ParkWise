@@ -89,6 +89,18 @@ public class ParkingLot
         emptySpots -= 1;
     }
 
+    public void OccupyPrepaidSpot(DateTime start_time, DateTime end_time)
+    {
+        int spotNumber = GetFirstAvaliableSpot();
+        ParkingSpot spot = GetSpot(spotNumber);
+        spot.IsOccupied = true;
+        spot.timeOccuipied = start_time;
+        spot.isPrepaid = true;
+        PrepaidSession session = new PrepaidSession(lotID, start_time, end_time);
+        sessionSpots.Add(spotNumber, session.session);
+        emptySpots -= 1;
+    }
+
     /// <summary>
     /// Releases a parking spot.
     /// </summary>
@@ -102,7 +114,7 @@ public class ParkingLot
             emptySpots +=1;
             spot.timeEmpited = DateTime.Now;
             sessionSpots[spotNumber].timeOut = spot.timeEmpited;
-            sessionSpots[spotNumber].GetPayment();
+            sessionSpots[spotNumber].SetPayment();
             spot.timeOccuipied = null;
         }
     }
