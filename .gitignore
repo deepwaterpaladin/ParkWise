@@ -9,3 +9,6 @@ packages/
 
 **/.json
 **/.cache
+ParkWise/obj/Debug/net7.0/ParkWise.GeneratedMSBuildEditorConfig.editorconfig
+ParkWise/obj/Debug/net7.0/ParkWise.csproj.AssemblyReference.cache
+.gitignore
