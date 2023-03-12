@@ -54,6 +54,20 @@ public class ParkingLot
         this.emptySpots = numSpots;
     }
 
+    public ParkingLot(int numberOfSpots, string ID, int numberOfFloors)
+    {
+        this.lotID = ID;
+        this.numberOfFloors = numberOfFloors;
+        _spots = new List<ParkingSpot>();
+        sessionSpots = new Dictionary<int, ParkingSession>();
+        for (int i = 1; i <= numberOfSpots; i++)
+        {
+            _spots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
+        }
+        this.numSpots = numberOfSpots;
+        this.emptySpots = numSpots;
+    }
+
     /// <summary>
     /// Retrieves a specific parking spot by spot number.
     /// </summary>
