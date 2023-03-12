@@ -80,5 +80,51 @@ namespace ParkingLotTests
             // Assert
             Assert.Equal(9, lot.emptySpots);
         }
+
+            [Fact]
+        public void ParkingLot_Constructor_ShouldCreateParkingLotWithCorrectNumberOfSpots()
+        {
+            // Arrange
+            int numberOfSpots = 50;
+            string ID = "101 Bank";
+            int numberOfFloors = 5;
+            
+            // Act
+            ParkingLot lot = new ParkingLot(numberOfSpots, ID, numberOfFloors);
+            
+            // Assert
+            Assert.Equal(numberOfSpots, lot.numSpots);
+        }
+
+        [Fact]
+        public void ParkingLot_Constructor_ShouldCreateParkingLotWithCorrectNumberOfFloors()
+        {
+            // Arrange
+            int numberOfSpots = 50;
+            string ID = "101 Bank";
+            int numberOfFloors = 5;
+            
+            // Act
+            ParkingLot lot = new ParkingLot(numberOfSpots, ID, numberOfFloors);
+            
+            // Assert
+            Assert.Equal(numberOfFloors, lot.numberOfFloors);
+        }
+
+        [Fact]
+        public void ParkingLot_Constructor_ShouldCreateParkingLotWithCorrectSpotsPerFloor()
+        {
+            // Arrange
+            int numberOfSpots = 50;
+            string ID = "101 Bank";
+            int numberOfFloors = 5;
+            int expectedSpotsPerFloor = 10;
+            
+            // Act
+            ParkingLot lot = new ParkingLot(numberOfSpots, ID, numberOfFloors);
+            
+            // Assert
+            Assert.Equal(expectedSpotsPerFloor, lot.spotsPerFloor);
+        }
     }
 }

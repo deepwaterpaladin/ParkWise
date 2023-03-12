@@ -10,12 +10,14 @@ public class ParkingLot
     /// <summary>
     /// The number of floors in the parking lot.
     /// </summary>
-    public int? numberOfFloors {private get; set;} // some lots will have several floors.
+    public int? numberOfFloors { get; set;} // some lots will have several floors.
+
+    public int? spotsPerFloor { get; set; } // naively assuming equal number spots per floor at first; TODO: refactor this
 
     /// <summary>
     /// A list of parking spots in the parking lot.
     /// </summary>
-    private List<ParkingSpot> _spots;
+    public List<ParkingSpot> lotSpots;
     /// <summary>
     /// A dictionary of parking sessions with their corresponding spot numbers.
     /// </summary>
@@ -44,25 +46,39 @@ public class ParkingLot
     public ParkingLot(int numberOfSpots, string ID)
     {
         this.lotID = ID;
-        _spots = new List<ParkingSpot>();
+        lotSpots = new List<ParkingSpot>();
         sessionSpots = new Dictionary<int, ParkingSession>();
         for (int i = 1; i <= numberOfSpots; i++)
         {
-            _spots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
+            lotSpots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
         }
         this.numSpots = numberOfSpots;
         this.emptySpots = numSpots;
     }
 
+    // TODO: determine what 
     public ParkingLot(int numberOfSpots, string ID, int numberOfFloors)
     {
         this.lotID = ID;
         this.numberOfFloors = numberOfFloors;
-        _spots = new List<ParkingSpot>();
+        this.spotsPerFloor = (int?)(double)(numberOfSpots / numberOfFloors);
+        lotSpots = new List<ParkingSpot>();
         sessionSpots = new Dictionary<int, ParkingSession>();
         for (int i = 1; i <= numberOfSpots; i++)
         {
-            _spots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
+            lotSpots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
+        }
+        int k = 1;
+        int nowFloor = 1;
+        Console.WriteLine($"{spotsPerFloor}");
+        while (k <= lotSpots.Count)
+        {
+            for (int i = k; i < Math.Min(k + spotsPerFloor.Value, lotSpots.Count); i++)
+            {
+                lotSpots[i].floorNumber = nowFloor;
+            }
+            k += spotsPerFloor.Value;
+            nowFloor++;
         }
         this.numSpots = numberOfSpots;
         this.emptySpots = numSpots;
@@ -75,7 +91,7 @@ public class ParkingLot
     /// <returns>The parking spot with the specified spot number, or null if the spot is not found.</returns>
     private ParkingSpot GetSpot(int spotNumber)
     {
-        return _spots.FirstOrDefault(s => s.SpotNumber == spotNumber);
+        return lotSpots.FirstOrDefault(s => s.SpotNumber == spotNumber);
     }
 
     /// <summary>
@@ -135,7 +151,7 @@ public class ParkingLot
 
     public int GetNumSpots()
     {
-        return _spots.Count;
+        return lotSpots.Count;
     }
 
     /// <summary>

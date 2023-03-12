@@ -27,8 +27,9 @@ class Program
 
     static void Demo2()
     {
-        ParkingLot BankStreet = new ParkingLot(40, "101 Bank");
+        ParkingLot BankStreet = new ParkingLot(40, "101 Bank", 4);
         Console.WriteLine($"Total Spots: {BankStreet.GetNumSpots()}");
+        Console.WriteLine($"Floor number: {BankStreet.lotSpots[10].floorNumber}");
         Console.WriteLine($"empty spots: {BankStreet.emptySpots}");
         BankStreet.OccupySpot(4);
         BankStreet.OccupySpot(2);
@@ -40,6 +41,7 @@ class Program
         BankStreet.OccupyPrepaidSpot(new DateTime(2022, 3, 11, 10, 0, 0), new DateTime(2022, 3, 11, 15, 0, 0));
         BankStreet.OccupyPrepaidSpot(new DateTime(2022, 5, 1, 8, 30, 0), new DateTime(2022, 5, 1, 14, 0, 0));
         Console.WriteLine($"Total Spots: {BankStreet.GetNumSpots()}");
+        Console.WriteLine($"empty spots: {BankStreet.emptySpots}");
         Console.WriteLine($"empty spots: {BankStreet.emptySpots}");
         foreach(var i in BankStreet.sessionSpots)
         {

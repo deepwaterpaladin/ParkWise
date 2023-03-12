@@ -8,4 +8,5 @@ public class ParkingSpot
     public DateTime? timeOccuipied { get; set; }
     public DateTime? timeEmpited { get; set; }
     public string ParentID { get; set; }
+    public int? floorNumber { get; set; }
 }

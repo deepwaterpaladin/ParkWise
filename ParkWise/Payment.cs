@@ -7,6 +7,8 @@ using System.Collections.Generic;
 public abstract class Payment
 {
     
+    // TODO: determine where `lots` dictionary should go
+    // TODO: refactor `lots` dictionary out of Payments class
     public static Dictionary<string, double> lots = new Dictionary<string, double> {
         { "10 King", 4.50 },
         { "290 Rideau", 5.25 },
