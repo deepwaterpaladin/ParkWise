@@ -126,5 +126,31 @@ namespace ParkingLotTests
             // Assert
             Assert.Equal(expectedSpotsPerFloor, lot.spotsPerFloor);
         }
+        
+        [Fact]
+        public void IsExpired_ShouldReturnTrue()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            DateTime startTime = DateTime.Now.AddHours(-3);
+            DateTime endTime = DateTime.Now.AddHours(-1);
+            lot.OccupyPrepaidSpot(startTime, endTime);
+            bool b = lot.hasExpiredVehicles();
+            // Assert
+            Assert.True(b);
+        }
+
+        [Fact]
+        public void IsExpiredFalseShouldReturnFalse()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            DateTime startTime = DateTime.Now.AddHours(-2);
+            DateTime endTime = DateTime.Now.AddHours(+1);
+            lot.OccupyPrepaidSpot(startTime, endTime);
+            // Assert
+            Assert.False(lot.hasExpiredVehicles());
+        }
+
     }
 }

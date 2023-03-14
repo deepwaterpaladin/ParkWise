@@ -103,7 +103,7 @@ public class ParkingLot
         ParkingSpot spot = GetSpot(spotNumber);
         spot.IsOccupied = true;
         spot.timeOccuipied = DateTime.Now;
-        ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
+        ParkingSession sesh = new ParkingSession(lotID, (DateTime)spot.timeOccuipied);
         sessionSpots.Add(spotNumber,sesh);
         emptySpots -= 1;
     }
@@ -114,7 +114,7 @@ public class ParkingLot
         ParkingSpot spot = GetSpot(spotNumber);
         spot.IsOccupied = true;
         spot.timeOccuipied = DateTime.Now;
-        ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
+        ParkingSession sesh = new ParkingSession(lotID, (DateTime)spot.timeOccuipied);
         sessionSpots.Add(spotNumber,sesh);
         emptySpots -= 1;
     }
@@ -181,21 +181,13 @@ public class ParkingLot
         return availableSpots.Min();
     }
 
-    public bool isExpired()
+    public bool hasExpiredVehicles()
     {
         foreach (KeyValuePair<int, ParkingSession> kvp in sessionSpots)
         {
-            int spotNumber = kvp.Key;
-            ParkingSession session = kvp.Value;
-
-            if (session.timeIn != null && session.timeOut < DateTime.Now)
+            kvp.Value.IsExpired();
+            if(kvp.Value.isExpired == true)
             {
-                ParkingSpot spot = GetSpot(spotNumber);
-                spot.IsOccupied = false;
-                spot.timeOccuipied = null;
-                spot.isPrepaid = false;
-                emptySpots += 1;
-                sessionSpots.Remove(spotNumber);
                 return true;
             }
         }
