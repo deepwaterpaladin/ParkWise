@@ -180,4 +180,26 @@ public class ParkingLot
         }
         return availableSpots.Min();
     }
+
+    public bool isExpired()
+    {
+        foreach (KeyValuePair<int, ParkingSession> kvp in sessionSpots)
+        {
+            int spotNumber = kvp.Key;
+            ParkingSession session = kvp.Value;
+
+            if (session.timeIn != null && session.timeOut < DateTime.Now)
+            {
+                ParkingSpot spot = GetSpot(spotNumber);
+                spot.IsOccupied = false;
+                spot.timeOccuipied = null;
+                spot.isPrepaid = false;
+                emptySpots += 1;
+                sessionSpots.Remove(spotNumber);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
