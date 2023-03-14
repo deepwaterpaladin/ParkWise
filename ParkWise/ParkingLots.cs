@@ -68,7 +68,7 @@ public class ParkingLot
         {
             lotSpots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
         }
-        int k = 1;
+        int k = 0;
         int nowFloor = 1;
         Console.WriteLine($"{spotsPerFloor}");
         while (k <= lotSpots.Count)
