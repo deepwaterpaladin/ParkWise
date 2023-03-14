@@ -67,6 +67,24 @@ namespace ParkingLotTests
         }
 
         [Fact]
+        public void TestGetFirstAvailableSpotTwice()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            lot.OccupySpot(1);
+
+            // Act
+            int firstAvailableSpot = lot.GetFirstAvaliableSpot();
+
+            // Assert
+            Assert.Equal(2, firstAvailableSpot);
+            lot.OccupySpot();
+            int secondFirstAvailableSpotlot = lot.GetFirstAvaliableSpot();
+            Assert.Equal(3, secondFirstAvailableSpotlot);
+
+        }
+
+        [Fact]
         public void TestOccupyPrepaidSpot()
         {
             // Arrange
