@@ -153,6 +153,7 @@ namespace ParkingLotTests
             DateTime startTime = DateTime.Now.AddHours(-3);
             DateTime endTime = DateTime.Now.AddHours(-1);
             lot.OccupyPrepaidSpot(startTime, endTime);
+            lot.sessionSpots[1].IsExpired();
             bool b = lot.hasExpiredVehicles();
             // Assert
             Assert.True(b);
