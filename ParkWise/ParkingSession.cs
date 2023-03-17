@@ -12,6 +12,7 @@ public class ParkingSession : Payment
     public double? payment_total { get; set; }
     public string lot_id { get; set; }
 
+    public Ticket ticket { get; set; }
     public bool isExpired { get; set; }
 
     public double GetPayment()
@@ -54,5 +55,27 @@ public class ParkingSession : Payment
         {
             this.isExpired = true;
         }
+    }
+
+    public void EndSession()
+    {
+        this.currentSession = DateTime.Now-this.timeIn;
+        this.timeOut = DateTime.Now;
+        this.SetPayment();
+        this.ticket = GetTicket();
+
+    }
+
+    public void EndSession(DateTime timeOut)
+    {
+        this.timeOut = timeOut;
+        this.currentSession = timeOut-this.timeIn;
+        this.SetPayment();
+        this.ticket = GetTicket();
+    }
+
+    public Ticket GetTicket()
+    {
+        return new Ticket(this.lot_id, (double)this.payment_total);
     }
 }
