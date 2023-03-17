@@ -10,6 +10,7 @@ public class PrepaidSession: Payment
     public string lot_id { get; set; }  
     private bool isExpired { get; set; }
     public ParkingSession session { get; set; }
+    public Ticket ticket { get; set; }
 
     public PrepaidSession(string id, DateTime start_time, DateTime end_time)
     {
@@ -19,7 +20,8 @@ public class PrepaidSession: Payment
         startTime = start_time;
         endTime = end_time;
         payment_total = lot_price*totalSession;
-        session = new ParkingSession(id, start_time, end_time, payment_total);
+        this.session = new ParkingSession(id, start_time, end_time, payment_total);
+        this.ticket = new Ticket(session);
 
     }
 }

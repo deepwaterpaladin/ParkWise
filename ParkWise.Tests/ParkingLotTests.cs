@@ -67,6 +67,24 @@ namespace ParkingLotTests
         }
 
         [Fact]
+        public void TestGetFirstAvailableSpotTwice()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            lot.OccupySpot(1);
+
+            // Act
+            int firstAvailableSpot = lot.GetFirstAvaliableSpot();
+
+            // Assert
+            Assert.Equal(2, firstAvailableSpot);
+            lot.OccupySpot();
+            int secondFirstAvailableSpotlot = lot.GetFirstAvaliableSpot();
+            Assert.Equal(3, secondFirstAvailableSpotlot);
+
+        }
+
+        [Fact]
         public void TestOccupyPrepaidSpot()
         {
             // Arrange
@@ -126,5 +144,32 @@ namespace ParkingLotTests
             // Assert
             Assert.Equal(expectedSpotsPerFloor, lot.spotsPerFloor);
         }
+        
+        [Fact]
+        public void IsExpired_ShouldReturnTrue()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            DateTime startTime = DateTime.Now.AddHours(-3);
+            DateTime endTime = DateTime.Now.AddHours(-1);
+            lot.OccupyPrepaidSpot(startTime, endTime);
+            lot.sessionSpots[1].IsExpired();
+            bool b = lot.hasExpiredVehicles();
+            // Assert
+            Assert.True(b);
+        }
+
+        [Fact]
+        public void IsExpiredFalseShouldReturnFalse()
+        {
+            // Arrange
+            ParkingLot lot = new ParkingLot(10, "101 Bank");
+            DateTime startTime = DateTime.Now.AddHours(-2);
+            DateTime endTime = DateTime.Now.AddHours(+1);
+            lot.OccupyPrepaidSpot(startTime, endTime);
+            // Assert
+            Assert.False(lot.hasExpiredVehicles());
+        }
+
     }
 }

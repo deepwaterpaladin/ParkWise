@@ -68,7 +68,7 @@ public class ParkingLot
         {
             lotSpots.Add(new ParkingSpot { SpotNumber = i, IsOccupied = false, ParentID = lotID});
         }
-        int k = 1;
+        int k = 0;
         int nowFloor = 1;
         Console.WriteLine($"{spotsPerFloor}");
         while (k <= lotSpots.Count)
@@ -103,7 +103,7 @@ public class ParkingLot
         ParkingSpot spot = GetSpot(spotNumber);
         spot.IsOccupied = true;
         spot.timeOccuipied = DateTime.Now;
-        ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
+        ParkingSession sesh = new ParkingSession(lotID, (DateTime)spot.timeOccuipied);
         sessionSpots.Add(spotNumber,sesh);
         emptySpots -= 1;
     }
@@ -114,7 +114,7 @@ public class ParkingLot
         ParkingSpot spot = GetSpot(spotNumber);
         spot.IsOccupied = true;
         spot.timeOccuipied = DateTime.Now;
-        ParkingSession sesh = new ParkingSession(lotID, spot.timeOccuipied);
+        ParkingSession sesh = new ParkingSession(lotID, (DateTime)spot.timeOccuipied);
         sessionSpots.Add(spotNumber,sesh);
         emptySpots -= 1;
     }
@@ -180,4 +180,18 @@ public class ParkingLot
         }
         return availableSpots.Min();
     }
+
+    public bool hasExpiredVehicles()
+    {
+        foreach (KeyValuePair<int, ParkingSession> kvp in sessionSpots)
+        {
+            kvp.Value.IsExpired();
+            if(kvp.Value.isExpired == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

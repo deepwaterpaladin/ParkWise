@@ -9,4 +9,6 @@ public class ParkingSpot
     public DateTime? timeEmpited { get; set; }
     public string ParentID { get; set; }
     public int? floorNumber { get; set; }
+
+    public ParkingSession session { get; set; }
 }

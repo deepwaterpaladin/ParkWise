@@ -48,10 +48,19 @@ class Program
             Console.WriteLine(i.Value.payment_total);
         }
     }
+
+    static void Demo3()
+    {
+        DateTime startTime = DateTime.Now.AddHours(-2);
+            DateTime endTime = DateTime.Now.AddHours(+1);
+            PrepaidSession session = new PrepaidSession("290 Rideau", startTime,endTime);
+            Console.WriteLine(session.ticket.ticket);
+
+    }
     
     
     static void Main(string[] args)
     {
-        Demo2();
+        Demo3();
     }
 }

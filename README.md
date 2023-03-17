@@ -14,6 +14,7 @@
 - [X] Create ParkingSpot class
 - [X] Download xUnit & Write Tests
 - [X] Create ParkingLot class
+- [ ] Add ticket class
 - [ ] Figure out a better way to determine the price/hour at a given lot (Payment.cs)
 - [ ] Research [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui?view=net-maui-7.0) & [Razor Pages in ASP.NET](https://learn.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-7.0&tabs=visual-studio-code) for UI
 - [ ] Implement database – [see ADO.NET](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/csharp/language-compilers/create-sql-server-database-programmatically)
