@@ -7,11 +7,11 @@ public class Ticket
 {
     public ParkingSession session { get; set; }
 
-    public double payment_total { get; set; }
+    public decimal payment_total { get; set; }
     public string lot_id { get; set; }
     public string ticket { get; set; }
 
-    public Ticket(string lot_id, double payment_total)
+    public Ticket(string lot_id, decimal payment_total)
     {
         this.payment_total = payment_total;
         this.lot_id = lot_id;
@@ -21,13 +21,13 @@ public class Ticket
 
     public Ticket(ParkingSession session)
     {
-        this.payment_total = (double)session.payment_total;
+        this.payment_total = (decimal)session.payment_total;
         this.lot_id = session.lot_id;
         this.ticket = CreateTicket();
     }
     public string CreateTicket()
     {
-        string paymentString = $"Total amount due: {this.payment_total}";
+        string paymentString = $"Total amount due: ${decimal.Round(this.payment_total, 2, MidpointRounding.AwayFromZero)}";
         string locationString = $"Parking Ticket For {this.lot_id}";
         StringBuilder divider = new StringBuilder();
         StringBuilder ticket = new StringBuilder();

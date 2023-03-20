@@ -76,6 +76,6 @@ public class ParkingSession : Payment
 
     public Ticket GetTicket()
     {
-        return new Ticket(this.lot_id, (double)this.payment_total);
+        return new Ticket(this.lot_id, (decimal)this.payment_total);
     }
 }
