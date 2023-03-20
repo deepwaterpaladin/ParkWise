@@ -23,12 +23,13 @@ public class Ticket
     {
         this.payment_total = (decimal)session.payment_total;
         this.lot_id = session.lot_id;
-        this.ticket = CreateTicket();
+        this.ticket = this.CreateTicket();
     }
     public string CreateTicket()
     {
         string paymentString = $"Total amount due: ${decimal.Round(this.payment_total, 2, MidpointRounding.AwayFromZero)}";
         string locationString = $"Parking Ticket For {this.lot_id}";
+        string timeParked = $"Total time parked: {this.session.expectedSession}";
         StringBuilder divider = new StringBuilder();
         StringBuilder ticket = new StringBuilder();
         divider.AppendLine("");
@@ -50,6 +51,7 @@ public class Ticket
         ticket.AppendLine(divider.ToString());
         ticket.AppendLine(locationString);
         ticket.AppendLine(divider.ToString());
+        ticket.AppendLine(timeParked);
         ticket.AppendLine(paymentString);
         ticket.AppendLine(divider.ToString());
         return ticket.ToString();
