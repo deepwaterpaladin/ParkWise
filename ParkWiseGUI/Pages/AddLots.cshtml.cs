@@ -14,7 +14,7 @@ namespace ParkWiseGUI.Pages
 
         public void OnGet()
         {
-            Message += $" Server time is { DateTime.Now }";
+            Message += $" Server time is { DateTime.Now } ";
         }
     }
 }
