@@ -20,3 +20,191 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Hero Section */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  background-image: url('https://lirp.cdn-website.com/md/unsplash/dms3rep/multi/opt/photo-1506521781263-d8422e82f27a-1920w.jpg');
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero button {
+  padding: 1rem 2rem;
+  border: none;
+  background-color: #00a2ff;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero button:hover {
+  background-color: #0077b6;
+}
+
+/* Features Section */
+
+#features {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+
+#features h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+#features ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#features ul li {
+  font-size: 1.2rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  flex-basis: 30%;
+}
+
+/* Pricing Section */
+#pricing {
+  background-color: #f6f6f6;
+  padding: 50px 0;
+}
+
+.pricing-plans {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.plan {
+  background-color: #fff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 40px;
+  text-align: center;
+  width: 300px;
+}
+
+.plan h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.plan p {
+  color: #777;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.plan .price {
+  color: #008aff;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.plan button {
+  background-color: #008aff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.plan button:hover {
+  background-color: #005dff;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Contact Section */
+#contact {
+  background-color: #fff;
+  padding: 50px 0;
+}
+
+#contact h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#contact input,
+#contact textarea {
+  background-color: #f6f6f6;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px #008aff;
+}
+
+#contact textarea {
+  height: 150px;
+}
+
+#contact button[type="submit"] {
+  background-color: #008aff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease-in-out;
+  width: 100%;
+}
+
+#contact button[type="submit"]:hover {
+  background-color: #005dff;
+}

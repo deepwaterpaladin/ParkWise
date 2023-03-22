@@ -8,13 +8,17 @@ using Microsoft.Extensions.Logging;
 
 namespace ParkWiseGUI.Pages
 {
-    public class Index2 : PageModel
+    public class SignIn : PageModel
     {
-        public string Message { get; private set; } = "";
+        private readonly ILogger<SignIn> _logger;
+
+        public SignIn(ILogger<SignIn> logger)
+        {
+            _logger = logger;
+        }
 
         public void OnGet()
         {
-            Message += $" Server time is { DateTime.Now }";
         }
     }
 }
