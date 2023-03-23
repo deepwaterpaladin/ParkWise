@@ -38,6 +38,8 @@ public class ParkingLot
     /// </summary>
     public string lotID { get; set; }
 
+    public double? monthlyRate { get; set; }
+
     /// <summary>
     /// Initializes a new instance of the ParkingLot class with the specified number of spots and ID.
     /// </summary>
@@ -131,6 +133,16 @@ public class ParkingLot
         emptySpots -= 1;
     }
 
+    public void OccupyMonthly()
+    {
+        int spotNumber = GetFirstAvaliableSpot();
+        ParkingSpot spot = GetSpot(spotNumber);
+        spot.IsOccupied = true;
+        spot.timeOccuipied = DateTime.Now;
+        spot.isMonthly = true;
+        emptySpots -= 1;
+    }
+
     /// <summary>
     /// Releases a parking spot.
     /// </summary>
@@ -143,9 +155,12 @@ public class ParkingLot
             spot.IsOccupied = false;
             emptySpots +=1;
             spot.timeEmpited = DateTime.Now;
-            sessionSpots[spotNumber].timeOut = spot.timeEmpited;
-            sessionSpots[spotNumber].SetPayment();
             spot.timeOccuipied = null;
+            if(spot.isMonthly != true)
+            {    
+                sessionSpots[spotNumber].timeOut = spot.timeEmpited;
+                sessionSpots[spotNumber].SetPayment();
+            }
         }
     }
 

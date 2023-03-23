@@ -5,10 +5,11 @@ public class ParkingSpot
     public int SpotNumber { get; set; }
     public bool IsOccupied { get; set; }
     public bool isPrepaid { get; set; }
+    public bool? isMonthly { get; set; }
     public DateTime? timeOccuipied { get; set; }
     public DateTime? timeEmpited { get; set; }
     public string ParentID { get; set; }
     public int? floorNumber { get; set; }
 
-    public ParkingSession session { get; set; }
+    // public ParkingSession session { get; set; }
 }

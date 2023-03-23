@@ -62,7 +62,6 @@ public class ParkingSession : Payment
         this.currentSession = DateTime.Now-this.timeIn;
         this.timeOut = DateTime.Now;
         this.SetPayment();
-        this.ticket = GetTicket();
 
     }
 
@@ -71,11 +70,6 @@ public class ParkingSession : Payment
         this.timeOut = timeOut;
         this.currentSession = timeOut-this.timeIn;
         this.SetPayment();
-        this.ticket = GetTicket();
     }
 
-    public Ticket GetTicket()
-    {
-        return new Ticket(this.lot_id, (decimal)this.payment_total);
-    }
 }

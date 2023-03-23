@@ -29,7 +29,7 @@ public class Ticket
     {
         string paymentString = $"Total amount due: ${decimal.Round(this.payment_total, 2, MidpointRounding.AwayFromZero)}";
         string locationString = $"Parking Ticket For {this.lot_id}";
-        string timeParked = $"Total time parked: {this.session.expectedSession}";
+        // string timeParked = $"Total time parked: {this.session.expectedSession}";
         StringBuilder divider = new StringBuilder();
         StringBuilder ticket = new StringBuilder();
         divider.AppendLine("");
@@ -51,7 +51,7 @@ public class Ticket
         ticket.AppendLine(divider.ToString());
         ticket.AppendLine(locationString);
         ticket.AppendLine(divider.ToString());
-        ticket.AppendLine(timeParked);
+        // ticket.AppendLine(timeParked);
         ticket.AppendLine(paymentString);
         ticket.AppendLine(divider.ToString());
         return ticket.ToString();
