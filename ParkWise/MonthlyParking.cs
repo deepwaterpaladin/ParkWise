@@ -8,12 +8,14 @@ public class MonthlyParkingSession
     public DateTime payment_date { get; set; }
 
     public bool paymentIsDue { get; set; }
-    public double monthlyRate { get; set; }
+    public int monthlyRate { get; set; }
     public ParkingSpot spot { get; set; }
+
+    public int monthsPaid { get; set; }
     
 
 
-    public MonthlyParkingSession(string lot_id, ParkingSpot spot, DateTime payment_date, double monthlyRate)
+    public MonthlyParkingSession(string lot_id, ParkingSpot spot, DateTime payment_date, int monthlyRate)
     {
         this.lot_id = lot_id;
         this.spot = spot;
@@ -22,12 +24,13 @@ public class MonthlyParkingSession
         this.paymentIsDue = false;
     }
 
-    public void PaymentDue()
+    public void PaymentDue(DateTime currentTime)
     {
         // payment_date 
         // get current date
         // if current date is past payment_date, set payment is due -> true
-        if (paymentIsDue == false && (DateTime.Now > payment_date))
+        DateTime lastPaymentPlusOneMonth = this.payment_date.AddMonths(monthsPaid);
+        if (paymentIsDue == false && (currentTime > (lastPaymentPlusOneMonth)))
         {
             paymentIsDue = true;
         }
@@ -40,5 +43,6 @@ public class MonthlyParkingSession
     public void HasPaid()
     {
         paymentIsDue = false;
+        this.monthsPaid +=1;
     }
 }
