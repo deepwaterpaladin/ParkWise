@@ -1,0 +1,178 @@
+@page
+@model ParkWiseGUI.Pages.AddLotsModel
+
+@{
+    ViewData["Title"] = "Add Lots";
+}
+
+
+<h2>Parking Lots</h2>
+<div class="row g-3">
+    <div class="table-bordered">
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <tr > 
+                    <th>Lot ID</th>
+                    <th>Address</th>
+                    <th>Total Spots</th>
+                    <th>Reserved Spots</th>
+                    <th>Avaliable Spots</th>
+                    <th>Hourly Rate</th>
+                    <th>Monthly Rate</th>
+                    <th>Manage Reservations</th>
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                <tr >
+                    <td>000-1</td>
+                    <td>101 Bank street</td>
+                    <td>75</td>
+                    <td>50</td>
+                    <td>25</td>
+                    <td>$15.00/hour</td>
+                    <td>$100.00/month</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReservationModal">Add</button>
+                        <button type="submit" class="btn btn-primary">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>000-2</td>
+                    <td>80 Main Street</td>
+                    <td>15</td>
+                    <td>4</td>
+                    <td>11</td>
+                    <td>$18.00/hour</td>
+                    <td>$50.00/month</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReservationModal">Add</button>
+                        <button type="submit" class="btn btn-primary">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>000-3</td>
+                    <td>2900 Parkdale Ave</td>
+                    <td>50</td>
+                    <td>48</td>
+                    <td>2</td>
+                    <td>$10.00/hour</td>
+                    <td>$90.00/month</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReservationModal">Add</button>
+                        <button type="submit" class="btn btn-primary">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>000-4</td>
+                    <td>290 Rideau Street</td>
+                    <td>120</td>
+                    <td>30</td>
+                    <td>90</td>
+                    <td>$20.00/hour</td>
+                    <td>$120.00/month</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReservationModal">Add</button>
+                        <button type="submit" class="btn btn-primary">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLotModal">Add Parking Lot</button>
+    
+
+
+    <!-- addReservationModal -->
+    <div class="modal fade" id="addReservationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Reservation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" class="row g-3">
+                        <div class="col-md-6">
+                            <label>First Name</label>
+                            <input class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Last Name</label>
+                            <input class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Vehicle Type</label>
+                            <input class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Licence Plate</label>
+                            <input class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label >Email</label>
+                            <input class="form-control" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Lot Modal -->
+    <div class="modal fade" id="addLotModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Parking Lot</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="row g-3">
+                    <div class="form-group">
+                        <label asp-for="Address">Address:</label>
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="NumberOfSpots">Number of Spots:</label>
+                        <input asp-for="NumberOfSpots" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="NumberOfFloors">Number of Floors:</label>
+                        <input asp-for="NumberOfFloors" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="MonthlyRate">Monthly Rate:</label>
+                        <input asp-for="MonthlyRate" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="HourlyRate">Hourly Rate:</label>
+                        <input asp-for="HourlyRate" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Multiple Levels</label>
+                        </div> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Custom Rules</label>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
