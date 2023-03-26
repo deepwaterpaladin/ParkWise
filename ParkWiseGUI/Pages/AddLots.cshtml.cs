@@ -17,4 +17,35 @@ namespace ParkWiseGUI.Pages
             Message += $" Server time is { DateTime.Now }";
         }
     }
+
+    public class AddLotsModel : PageModel
+    {
+        // private readonly YourDataContext _context;
+
+        [BindProperty]
+        public string? Address { get; set; }
+        [BindProperty]
+        public int? NumberOfFloors { get; set; }
+        [BindProperty]
+        public int? NumberOfSpots { get; set; }
+        [BindProperty]
+        public bool? HasFloors { get; set; }
+        [BindProperty]
+        public int? SpotsPerFloor { get; set; }
+        [BindProperty]
+        public double? MonthlyRate { get; set; }
+
+        [BindProperty]
+        public double? HourlyRate { get; set; }
+        
+
+        // Initialize the list of parking lots
+        public List<ParkingLot> ParkingLots = new List<ParkingLot>();
+
+
+        // GET request for the AddLots page
+        public void OnGet()
+        {
+        }
+    }
 }

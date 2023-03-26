@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/riellyyoung/Desktop/ParkWise/ParkWise/ParkWise.csproj",
+      "projectUniqueName": "/Users/riellyyoung/ParkWise/ParkWise/ParkWise.csproj",
       "projectName": "ParkWise",
-      "projectPath": "/Users/riellyyoung/Desktop/ParkWise/ParkWise/ParkWise.csproj",
+      "projectPath": "/Users/riellyyoung/ParkWise/ParkWise/ParkWise.csproj",
       "packagesPath": "/Users/riellyyoung/.nuget/packages/",
-      "outputPath": "/Users/riellyyoung/Desktop/ParkWise/ParkWise/obj/",
+      "outputPath": "/Users/riellyyoung/ParkWise/ParkWise/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/riellyyoung/.nuget/NuGet/NuGet.Config"
