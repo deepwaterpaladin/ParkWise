@@ -57,7 +57,10 @@ public class ParkingLot
         this.numSpots = numberOfSpots;
         this.emptySpots = numSpots;
     }
-
+    public ParkingLot()
+    {
+        
+    }
     // TODO: determine what 
     public ParkingLot(int numberOfSpots, string ID, int numberOfFloors)
     {

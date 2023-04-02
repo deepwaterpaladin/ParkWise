@@ -40,12 +40,16 @@ namespace ParkWiseGUI.Pages
         
 
         // Initialize the list of parking lots
-        public List<ParkingLot> ParkingLots = new List<ParkingLot>();
+        public List<ParkingLot> ParkingLots { get; set; }
 
 
         // GET request for the AddLots page
         public void OnGet()
         {
+            this.ParkingLots = new List<ParkingLot>(); 
+            ParkingLot lot = new ParkingLot(40, "id");
+            this.ParkingLots.Add(lot);
+            Console.WriteLine($"{this.ParkingLots[0].numSpots}");
         }
     }
 }
