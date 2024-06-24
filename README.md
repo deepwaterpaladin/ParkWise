@@ -12,7 +12,6 @@
 ## TO DO <a id="todo"> </a>
 
 - [X] Create ParkingSpot class
-- [X] Download xUnit & Write Tests
 - [X] Create ParkingLot class
 - [ ] Add ticket class
 - [ ] Figure out a better way to determine the price/hour at a given lot (Payment.cs)
